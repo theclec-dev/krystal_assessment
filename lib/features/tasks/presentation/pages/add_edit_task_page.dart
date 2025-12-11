@@ -5,6 +5,7 @@ import 'package:krystal_assessment/core/constants/app_constants.dart';
 import 'package:krystal_assessment/features/tasks/domain/entities/task.dart';
 import 'package:krystal_assessment/features/tasks/presentation/providers/task_providers.dart';
 import 'package:uuid/uuid.dart';
+import 'package:krystal_assessment/core/components/labeled_text_field.dart';
 
 @RoutePage()
 class AddEditTaskPage extends ConsumerStatefulWidget {
@@ -126,13 +127,11 @@ class _AddEditTaskPageState extends ConsumerState<AddEditTaskPage> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            TextFormField(
+            LabeledTextField(
               controller: _titleController,
-              decoration: const InputDecoration(
-                labelText: 'Title',
-                hintText: 'Enter task title',
-                prefixIcon: Icon(Icons.title),
-              ),
+              labelText: 'Title',
+              hintText: 'Enter task title',
+              prefixIcon: Icons.title,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
@@ -146,14 +145,12 @@ class _AddEditTaskPageState extends ConsumerState<AddEditTaskPage> {
               enabled: !_isLoading,
             ),
             const SizedBox(height: 16),
-            TextFormField(
+            LabeledTextField(
               controller: _descriptionController,
-              decoration: const InputDecoration(
-                labelText: 'Description',
-                hintText: 'Enter task description',
-                prefixIcon: Icon(Icons.description),
-                alignLabelWithHint: true,
-              ),
+              labelText: 'Description',
+              hintText: 'Enter task description',
+              prefixIcon: Icons.description,
+              alignLabelWithHint: true,
               maxLines: 5,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {

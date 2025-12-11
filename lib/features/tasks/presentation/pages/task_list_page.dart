@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:krystal_assessment/application/router/app_router.dart';
+import 'package:krystal_assessment/application/theme/theme_notifier.dart';
+import 'package:krystal_assessment/core/components/search_field.dart';
 import 'package:krystal_assessment/core/components/empty_state_widget.dart';
 import 'package:krystal_assessment/core/components/error_widget.dart';
 import 'package:krystal_assessment/core/components/loading_widget.dart';
@@ -34,32 +36,40 @@ class _TaskListPageState extends ConsumerState<TaskListPage> {
   @override
   Widget build(BuildContext context) {
     final taskListState = ref.watch(taskListProvider);
+    final themeMode = ref.watch(themeNotifierProvider);
+
+    IconData themeIcon;
+    if (themeMode == ThemeMode.system) {
+      themeIcon = Icons.nights_stay;
+    } else if (themeMode == ThemeMode.dark) {
+      themeIcon = Icons.wb_sunny;
+    } else {
+      themeIcon = Icons.brightness_auto;
+    }
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppConstants.appTitle),
+        actions: [
+          IconButton(
+            tooltip: 'Toggle theme',
+            icon: Icon(themeIcon),
+            onPressed:
+                () => ref.read(themeNotifierProvider.notifier).toggleNext(),
+          ),
+        ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextField(
+            child: SearchField(
               controller: _searchController,
-              decoration: InputDecoration(
-                hintText: AppConstants.searchHint,
-                prefixIcon: const Icon(Icons.search),
-                suffixIcon:
-                    _searchController.text.isNotEmpty
-                        ? IconButton(
-                          icon: const Icon(Icons.clear),
-                          onPressed: () {
-                            _searchController.clear();
-                            _onSearchChanged('');
-                          },
-                        )
-                        : null,
-                filled: true,
-                fillColor: Theme.of(context).colorScheme.surface,
-              ),
+              hintText: AppConstants.searchHint,
+              showClear: _searchController.text.isNotEmpty,
+              onClear: () {
+                _searchController.clear();
+                _onSearchChanged('');
+              },
               onChanged: _onSearchChanged,
             ),
           ),

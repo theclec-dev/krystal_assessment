@@ -20,6 +20,8 @@ This is a task management application built as part of a technical assessment. T
 - ✅ **Empty State**: User-friendly message when no tasks exist
 - ✅ **Error Handling**: Graceful error messages and retry functionality
 - ✅ **Loading States**: Visual feedback during data operations
+- ✅ **Splash Page**: A brief branded splash shown on app start
+- ✅ **Theme Toggle**: App-level theme control with persistent choice (automatic/dark/light)
 
 ## 🏗️ Architecture
 
@@ -56,12 +58,15 @@ lib/
 │   │   └── app_router.gr.dart (generated)
 │   └── theme/               # App theming
 │       └── app_theme.dart
+│       └── theme_notifier.dart
 │
 ├── core/                    # Shared utilities and components
 │   ├── components/          # Reusable UI components
 │   │   ├── empty_state_widget.dart
 │   │   ├── error_widget.dart
+│   │   └── labeled_text_field.dart
 │   │   └── loading_widget.dart
+│   │   └── search_field.dart
 │   ├── constants/           # App-wide constants
 │   │   └── app_constants.dart
 │   └── utils/              # Utility functions
@@ -103,7 +108,7 @@ lib/
 
 ## 🔧 Technology Stack
 
-- **Framework**: Flutter 3.x
+- **Framework**: Flutter 3.29.3
 - **Language**: Dart 3.7.2+
 - **State Management**: Riverpod 3.0.3
 - **Local Database**: SQLite (sqflite 2.4.2)
@@ -155,6 +160,7 @@ lib/
 - **Empty States**: Helpful messages when no data exists
 - **Confirmation Dialogs**: Prevents accidental deletions
 - **Search Functionality**: Real-time task filtering
+- **Dynamic Themeing**: Allows dynamic theme switching
 
 ## 🚀 Getting Started
 
@@ -250,6 +256,16 @@ flutter test test/integration
 - Results filter in real-time
 - Search matches both title and description
 
+### Theme Control
+
+- The app supports three theme modes: **Automatic (system)**, **Dark**, and **Light**.
+- The theme button is available in the app bar on the main task list screen. It cycles the theme in the order: Automatic → Dark → Light → Automatic.
+- The user's selection is persisted across app launches using local storage.
+
+### Splash Page
+
+- On app launch the splash page is shown first (configured as the initial route). After a brief animated intro the app navigates to the task list.
+
 ## 🎯 Assumptions & Decisions
 
 ### Assumptions Made
@@ -272,7 +288,7 @@ flutter test test/integration
 
 ### Challenges Addressed
 
-1. **State Management**: Used Riverpod's AsyncValue for elegant loading/error states
+1. **State Management**: Used Riverpod's AsyncValue for elegant loading/error states (Using Riverpod legacy package)
 2. **Database Operations**: Wrapped in try-catch with meaningful error messages
 3. **Search Performance**: Implemented database-level filtering for efficiency
 4. **User Feedback**: Added loading indicators, snackbars, and confirmation dialogs
@@ -287,7 +303,6 @@ Potential improvements for production readiness:
 - [ ] Add due dates and reminders
 - [ ] Support for task notes/attachments
 - [ ] Implement task sorting options
-- [ ] Add dark mode toggle
 - [ ] Implement task sharing
 - [ ] Add data export/import
 - [ ] Include analytics/statistics
@@ -299,13 +314,14 @@ This project is created for assessment purposes.
 
 ## 👤 Author
 
-**Your Name**
+Enemuoh, CHukwuebuka Charles
 
 ## 📞 Support
 
 For questions or issues, please reach out via the provided contact information.
 
----
+c.enemuoh97@gmail.com
+07052158985, 08140907034
 
-**Estimated Development Time**: 6-10 hours
+**Estimated Development Time**: ~8/9 hours (8:30pm - 11pm, 10th Dec; 3am - 9am)
 **Completion Date**: December 2025
