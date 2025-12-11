@@ -218,14 +218,6 @@ Test individual widgets and UI components:
 flutter test test/widget
 ```
 
-### Integration Tests
-
-Test complete user flows:
-
-```bash
-flutter test test/integration
-```
-
 ## 📱 Usage
 
 ### Creating a Task
@@ -314,7 +306,7 @@ This project is created for assessment purposes.
 
 ## 👤 Author
 
-Enemuoh, CHukwuebuka Charles
+Enemuoh, Chukwuebuka Charles
 
 ## 📞 Support
 
@@ -323,5 +315,5 @@ For questions or issues, please reach out via the provided contact information.
 c.enemuoh97@gmail.com
 07052158985, 08140907034
 
-**Estimated Development Time**: ~8/9 hours (8:30pm - 11pm, 10th Dec; 3am - 9am)
-**Completion Date**: December 2025
+**Estimated Development Time**: ~8/9 hours (8:30pm - 10pm, 10th Dec; 5am - 10am)
+**Completion Date**: December 11th, 2025
