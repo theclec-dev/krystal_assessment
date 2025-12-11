@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AppConstants {
   // Database
   static const String dbName = 'tasks.db';
@@ -7,7 +9,7 @@ class AppConstants {
   static const String tasksTable = 'tasks';
 
   // App strings
-  static const String appTitle = 'Personal Task Manager';
+  static const String appTitle = 'Taskly';
   static const String emptyTasksMessage =
       'No tasks yet. Create your first task!';
   static const String searchHint = 'Search tasks...';
@@ -28,4 +30,11 @@ class AppConstants {
   static const String taskAddedSuccess = 'Task added successfully';
   static const String taskUpdatedSuccess = 'Task updated successfully';
   static const String taskDeletedSuccess = 'Task deleted successfully';
+
+  // Dimensions
+  static double deviceHeight(BuildContext context) =>
+      MediaQuery.of(context).size.height;
+
+  static double deviceWidth(BuildContext context) =>
+      MediaQuery.of(context).size.width;
 }

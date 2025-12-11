@@ -57,6 +57,22 @@ class AddEditTaskRouteArgs {
 }
 
 /// generated route for
+/// [SplashPage]
+class SplashRoute extends PageRouteInfo<void> {
+  const SplashRoute({List<PageRouteInfo>? children})
+    : super(SplashRoute.name, initialChildren: children);
+
+  static const String name = 'SplashRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SplashPage();
+    },
+  );
+}
+
+/// generated route for
 /// [TaskListPage]
 class TaskListRoute extends PageRouteInfo<void> {
   const TaskListRoute({List<PageRouteInfo>? children})
